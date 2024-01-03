@@ -7,14 +7,17 @@ import { useEffect , useState } from 'react';
 function App() {
 const [postsData, setPostsData] = useState([]);
 
-useEffect(function(){
+// useEffect(function(){
+//   getApiData()
+// },[])
+useEffect(()=>{
   getApiData()
 },[])
 
 const getApiData = ()=>{
   fetch('https://dummyjson.com/products')
   .then(res => res.json())
-  .then( res => setPostsData(res.products))
+  .then( res => setPostsData(res.products));
   // .then( res => console.log(res.products))
 }
 
@@ -23,17 +26,20 @@ const getApiData = ()=>{
     <div className="App">
       <header className="App-header">
 
-      <div className='main'>
-    <div className='flex justify-center  items-center'>
+      <div className='main '>
+    <div className='flex justify-start items-center'>
       
-        <img className='w-9 rounded-full mr-3' src="https://clipart-library.com/images/pTodqMqAc.jpg" alt="" />
+        <img className='w-9 rounded-full mr-3' src="https://clipart-library.com/images/pTodqMqAc.jpg" alt="fb-image" />
     
       <div className=''>
-        <h1 className='font-semibold text-lg'>{postsData[0].title}</h1>
-        <p>Sponsored</p>
+        <h1 className='font-semibold mt-2 text-lg'>{postsData[0].title}</h1>
+        <p className='mb-2'>Sponsored</p>
       </div>
 
     </div>
+      <div className='justify-center  items-center'>
+        <h1 className='font-medium'>{postsData[0].description}</h1>
+      </div>
 
   </div>
 
@@ -42,7 +48,7 @@ const getApiData = ()=>{
 {postsData.map((items)=>{
   return(
   <> 
- 
+{/* {items.title}  */}
 </>
 )
 })}
